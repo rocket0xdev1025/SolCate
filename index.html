@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SolCate | $SOLCATE — Fierce Feline Energy on Solana</title>
+  <meta name="description" content="SolCate brings fierce feline energy, Solana speed, and nonstop meme chaos to the blockchain. Buy $SOLCATE on Solana." />
+  <meta property="og:title" content="SolCate | $SOLCATE" />
+  <meta property="og:description" content="Fierce feline energy. Solana speed. Nonstop meme chaos." />
+  <meta property="og:image" content="banner.jpg" />
+  <link rel="icon" href="logo.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Sora:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cyan: { DEFAULT: "#2DE2C5", glow: "#14F195" },
+            violet: { DEFAULT: "#9945FF", deep: "#6C3BFF" },
+            ink: "#050218",
+            mist: "#D7FFF6"
+          },
+          fontFamily: {
+            display: ["Orbitron", "sans-serif"],
+            body: ["Sora", "sans-serif"]
+          },
+          boxShadow: {
+            glow: "0 0 40px rgba(45,226,197,0.28)",
+            violet: "0 0 40px rgba(153,69,255,0.28)"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --cyan: #2DE2C5;
+      --mint: #14F195;
+      --blue: #4B8CFF;
+      --purple: #9945FF;
+      --ink: #050218;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Sora", sans-serif;
+      background: var(--ink);
+      color: #e9fff8;
+    }
+    .sky-layer {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(180deg, rgba(5,2,24,0.28) 0%, rgba(8,4,32,0.55) 42%, rgba(5,2,24,0.92) 100%),
+        url("sky.jpg") center top / cover no-repeat fixed;
+    }
+    .grain {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.18;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E");
+    }
+    .aurora {
+      position: fixed;
+      inset: -20% -10%;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(40% 30% at 20% 10%, rgba(153,69,255,0.28), transparent 70%),
+        radial-gradient(35% 28% at 80% 8%, rgba(45,226,197,0.22), transparent 70%),
+        radial-gradient(30% 24% at 50% 100%, rgba(75,140,255,0.18), transparent 70%);
+      animation: aurora-drift 18s ease-in-out infinite alternate;
+    }
+    @keyframes aurora-drift {
+      from { transform: translate3d(-2%, 0, 0) scale(1); }
+      to { transform: translate3d(3%, 2%, 0) scale(1.05); }
+    }
+    .grad-text {
+      background: linear-gradient(90deg, #14F195 0%, #2DE2C5 28%, #4B8CFF 62%, #9945FF 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      background-size: 220% auto;
+      animation: shine 7s linear infinite;
+    }
+    @keyframes shine {
+      to { background-position: 220% center; }
+    }
+    .glow-ring {
+      box-shadow:
+        0 0 0 2px rgba(45,226,197,0.35),
+        0 0 28px rgba(45,226,197,0.35),
+        0 0 64px rgba(153,69,255,0.22);
+    }
+    .btn-buy {
+      background: linear-gradient(90deg, #14F195, #2DE2C5 50%, #4B8CFF);
+      color: #04120f;
+      box-shadow: 0 0 28px rgba(20,241,149,0.35);
+    }
+    .btn-buy:hover { filter: brightness(1.08); transform: translateY(-1px); }
+    .btn-chart {
+      border: 1px solid rgba(45,226,197,0.55);
+      background: rgba(8,6,28,0.55);
+      color: #2DE2C5;
+      box-shadow: 0 0 18px rgba(153,69,255,0.18);
+    }
+    .btn-chart:hover {
+      border-color: #9945FF;
+      color: #fff;
+      box-shadow: 0 0 24px rgba(153,69,255,0.35);
+    }
+    .glass {
+      background: linear-gradient(180deg, rgba(12,8,36,0.72), rgba(8,6,28,0.86));
+      border: 1px solid rgba(45,226,197,0.22);
+      backdrop-filter: blur(16px);
+    }
+    .cat-card { position: relative; }
+    .cat-card .ear {
+      position: absolute;
+      top: -18px;
+      width: 28px;
+      height: 22px;
+      background: linear-gradient(180deg, #2DE2C5, #9945FF);
+      clip-path: polygon(50% 0, 0 100%, 100% 100%);
+      filter: drop-shadow(0 0 8px rgba(45,226,197,0.45));
+    }
+    .cat-card .ear.left { left: 22px; transform: rotate(-12deg); }
+    .cat-card .ear.right { right: 22px; transform: rotate(12deg); }
+    .whisker {
+      height: 2px;
+      width: 72px;
+      background: linear-gradient(90deg, transparent, #2DE2C5, #9945FF, transparent);
+    }
+    .paw-float {
+      position: absolute;
+      width: 64px;
+      mix-blend-mode: screen;
+      opacity: 0.45;
+      animation: paw-drift 14s ease-in-out infinite;
+      pointer-events: none;
+    }
+    @keyframes paw-drift {
+      0%, 100% { transform: translateY(0) rotate(-8deg); }
+      50% { transform: translateY(-18px) rotate(8deg); }
+    }
+    .logo-pulse {
+      animation: pulse-glow 3.4s ease-in-out infinite;
+    }
+    @keyframes pulse-glow {
+      0%, 100% { filter: drop-shadow(0 0 12px rgba(45,226,197,0.55)); }
+      50% { filter: drop-shadow(0 0 28px rgba(153,69,255,0.7)); }
+    }
+    .marquee {
+      overflow: hidden;
+      white-space: nowrap;
+      border-block: 1px solid rgba(45,226,197,0.18);
+      background: rgba(5,2,24,0.55);
+    }
+    .marquee-track {
+      display: inline-flex;
+      gap: 2.5rem;
+      animation: marquee 28s linear infinite;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    .step-num {
+      background: linear-gradient(135deg, #14F195, #4B8CFF 55%, #9945FF);
+      color: #04120f;
+    }
+    .copy-toast {
+      transform: translateY(20px);
+      opacity: 0;
+      pointer-events: none;
+      transition: 0.28s ease;
+    }
+    .copy-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #050218; }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(#2DE2C5, #9945FF);
+      border-radius: 99px;
+    }
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -6px;
+      height: 2px;
+      background: linear-gradient(90deg, #14F195, #9945FF);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+    .nav-link:hover::after { transform: scaleX(1); }
+    iframe.chart-frame {
+      background: #0b081c;
+    }
+  </style>
+</head>
+<body class="font-body antialiased overflow-x-hidden">
+  <div class="sky-layer"></div>
+  <div class="aurora"></div>
+  <div class="grain"></div>
+
+  <!-- NAV -->
+  <header class="fixed top-0 inset-x-0 z-50">
+    <div class="mx-auto max-w-7xl px-4">
+      <nav class="mt-3 flex items-center justify-between gap-3 rounded-2xl glass px-3 py-2.5 sm:px-5">
+        <a href="#top" class="flex items-center gap-2 shrink-0">
+          <img src="logo.png" alt="SolCate logo" class="h-10 w-10 rounded-full logo-pulse" />
+          <span class="font-display text-lg tracking-wide grad-text">SolCate</span>
+        </a>
+        <div class="hidden lg:flex items-center gap-7 text-sm font-medium text-cyan/90">
+          <a class="nav-link hover:text-white" href="#about">About</a>
+          <a class="nav-link hover:text-white" href="#howto">How to Buy</a>
+          <a class="nav-link hover:text-white" href="#chart">Chart</a>
+          <a class="nav-link hover:text-white" href="#community">Community</a>
+        </div>
+        <div class="flex items-center gap-2 sm:gap-3">
+          <a href="https://t.me/SOLdiersArmy_portal" target="_blank" rel="noopener" class="hidden sm:block hover:scale-110 transition" title="Telegram">
+            <img src="tg.png" alt="Telegram" class="h-9 w-9 rounded-full" />
+          </a>
+          <a href="https://x.com/unicornhood_x" target="_blank" rel="noopener" class="hidden sm:block hover:scale-110 transition" title="X">
+            <img src="x.png" alt="X / Twitter" class="h-9 w-9 rounded-full object-cover ring-1 ring-white/20" />
+          </a>
+          <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener" class="btn-buy rounded-full px-4 py-2 text-sm font-bold tracking-wide transition">Buy Now</a>
+          <button id="menuBtn" class="lg:hidden grid h-10 w-10 place-items-center rounded-full border border-cyan/30 text-cyan" aria-label="Open menu">☰</button>
+        </div>
+      </nav>
+      <div id="mobileMenu" class="hidden lg:hidden mt-2 glass rounded-2xl p-4 space-y-3 text-cyan">
+        <a class="block" href="#about">About</a>
+        <a class="block" href="#howto">How to Buy</a>
+        <a class="block" href="#chart">Chart</a>
+        <a class="block" href="#community">Community</a>
+        <div class="flex gap-3 pt-1">
+          <a href="https://t.me/SOLdiersArmy_portal" target="_blank" rel="noopener"><img src="tg.png" alt="Telegram" class="h-9 w-9 rounded-full" /></a>
+          <a href="https://x.com/unicornhood_x" target="_blank" rel="noopener"><img src="x.png" alt="X" class="h-9 w-9 rounded-full object-cover" /></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- HERO -->
+    <section class="relative min-h-screen pt-28 pb-16 flex items-center">
+      <img src="paw.jpg" alt="" class="paw-float left-[6%] top-[22%] hidden md:block" style="animation-delay:-2s" />
+      <img src="paw.jpg" alt="" class="paw-float right-[8%] top-[38%] hidden md:block w-20" style="animation-delay:-7s" />
+      <img src="paw.jpg" alt="" class="paw-float left-[12%] bottom-[12%] hidden lg:block w-16" style="animation-delay:-4s" />
+
+      <div class="mx-auto max-w-7xl px-4 grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <div class="inline-flex items-center gap-2 rounded-full border border-cyan/30 bg-black/30 px-3 py-1 text-xs tracking-widest text-cyan uppercase">
+            <span class="h-2 w-2 rounded-full bg-mint animate-pulse"></span>
+            Solana meme • $SOLCATE
+          </div>
+          <h1 class="mt-5 font-display text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight tracking-tight">
+            <span class="grad-text">SolCate</span>
+          </h1>
+          <p class="mt-2 font-display text-xl sm:text-2xl text-violet">$SOLCATE</p>
+          <p class="mt-6 max-w-xl text-lg sm:text-xl text-mist/90 leading-relaxed">
+            SolCate brings fierce feline energy, Solana speed, and nonstop meme chaos to the blockchain.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener" class="btn-buy rounded-full px-7 py-3.5 font-bold text-base transition">Buy Now</a>
+            <a href="https://dexscreener.com/solana/TBA" target="_blank" rel="noopener" class="btn-chart rounded-full px-7 py-3.5 font-bold text-base transition">Chart</a>
+          </div>
+
+          <div class="mt-8 glass rounded-2xl p-3 sm:p-4 max-w-xl">
+            <div class="flex items-center justify-between gap-3">
+              <div class="min-w-0">
+                <p class="text-[11px] uppercase tracking-[0.2em] text-cyan/70">Contract Address</p>
+                <p id="caText" class="mt-1 font-mono text-sm sm:text-base truncate text-white">TBA</p>
+              </div>
+              <button id="copyBtn" class="shrink-0 rounded-full border border-cyan/40 px-4 py-2 text-sm font-semibold text-cyan hover:bg-cyan/10 transition">Copy CA</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="relative">
+          <div class="absolute -inset-6 rounded-full bg-gradient-to-br from-cyan/20 via-transparent to-violet/30 blur-3xl"></div>
+          <img src="logo.png" alt="SolCate mascot logo" class="relative mx-auto w-64 sm:w-80 lg:w-[22rem] logo-pulse" />
+        </div>
+      </div>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee py-3">
+      <div class="marquee-track font-display text-sm tracking-[0.3em] text-cyan/80">
+        <span>$SOLCATE</span><span>✦</span><span>FIERCE FELINE ENERGY</span><span>✦</span><span>SOLANA SPEED</span><span>✦</span><span>MEME CHAOS</span><span>✦</span><span>MEOW</span><span>✦</span>
+        <span>$SOLCATE</span><span>✦</span><span>FIERCE FELINE ENERGY</span><span>✦</span><span>SOLANA SPEED</span><span>✦</span><span>MEME CHAOS</span><span>✦</span><span>MEOW</span><span>✦</span>
+      </div>
+    </div>
+
+    <!-- BANNER -->
+    <section class="py-10 sm:py-14">
+      <div class="mx-auto max-w-7xl px-4">
+        <div class="glow-ring overflow-hidden rounded-3xl">
+          <img src="banner.jpg" alt="SolCate banner" class="w-full h-auto object-cover" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-16 sm:py-24">
+      <div class="mx-auto max-w-7xl px-4">
+        <div class="flex flex-col items-center text-center mb-12">
+          <div class="flex items-center gap-3">
+            <span class="whisker"></span>
+            <p class="text-xs tracking-[0.35em] uppercase text-cyan">The Litter</p>
+            <span class="whisker"></span>
+          </div>
+          <h2 class="mt-3 font-display text-3xl sm:text-5xl font-bold grad-text">Nine lives. One chain.</h2>
+          <p class="mt-4 max-w-2xl text-mist/80">
+            SolCate brings fierce feline energy, Solana speed, and nonstop meme chaos to the blockchain. Claws out. Chart up. Litter in.
+          </p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-10 items-center">
+          <div class="relative">
+            <img src="mascot.jpg" alt="SolCate cyber cat mascot" class="relative mx-auto w-full max-w-md mix-blend-screen" />
+          </div>
+          <div class="grid sm:grid-cols-1 gap-6">
+            <article class="cat-card glass rounded-3xl p-6 pt-8">
+              <span class="ear left"></span><span class="ear right"></span>
+              <h3 class="font-display text-xl text-cyan">Fierce feline energy</h3>
+              <p class="mt-2 text-sm text-mist/75 leading-relaxed">No naps until the candles print. SolCate hunts like a cat with a laser — focused, fast, and a little unhinged.</p>
+            </article>
+            <article class="cat-card glass rounded-3xl p-6 pt-8">
+              <span class="ear left"></span><span class="ear right"></span>
+              <h3 class="font-display text-xl text-cyan">Solana speed</h3>
+              <p class="mt-2 text-sm text-mist/75 leading-relaxed">Sub-second fills. Tiny fees. The chain moves as fast as a cat spotting a red dot. $SOLCATE lives on Solana.</p>
+            </article>
+            <article class="cat-card glass rounded-3xl p-6 pt-8">
+              <span class="ear left"></span><span class="ear right"></span>
+              <h3 class="font-display text-xl text-cyan">Nonstop meme chaos</h3>
+              <p class="mt-2 text-sm text-mist/75 leading-relaxed">The litter never sleeps. Nine lives of on-chain chaos, night raids, and meme warfare. Join the pack or get scratched.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW TO BUY -->
+    <section id="howto" class="py-16 sm:py-24">
+      <div class="mx-auto max-w-7xl px-4">
+        <div class="flex flex-col items-center text-center mb-12">
+          <div class="flex items-center gap-3">
+            <span class="whisker"></span>
+            <p class="text-xs tracking-[0.35em] uppercase text-cyan">Grab a bag</p>
+            <span class="whisker"></span>
+          </div>
+          <h2 class="mt-3 font-display text-3xl sm:text-5xl font-bold grad-text">How to Buy $SOLCATE</h2>
+          <p class="mt-4 max-w-2xl text-mist/80">Four claws. Four steps. Buy $SOLCATE on Solana in under a minute.</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+          <article class="cat-card glass rounded-3xl p-6 pt-8">
+            <span class="ear left"></span><span class="ear right"></span>
+            <div class="flex items-center gap-3">
+              <span class="step-num grid h-10 w-10 place-items-center rounded-full font-display font-bold">1</span>
+              <img src="paw.jpg" alt="" class="h-10 w-10 mix-blend-screen" />
+            </div>
+            <h3 class="mt-4 font-display text-lg text-white">Get a Solana wallet</h3>
+            <p class="mt-2 text-sm text-mist/75 leading-relaxed">Install Phantom or Solflare on mobile or as a browser extension. That’s your cat carrier for $SOLCATE.</p>
+          </article>
+          <article class="cat-card glass rounded-3xl p-6 pt-8">
+            <span class="ear left"></span><span class="ear right"></span>
+            <div class="flex items-center gap-3">
+              <span class="step-num grid h-10 w-10 place-items-center rounded-full font-display font-bold">2</span>
+              <img src="paw.jpg" alt="" class="h-10 w-10 mix-blend-screen" />
+            </div>
+            <h3 class="mt-4 font-display text-lg text-white">Load it with SOL</h3>
+            <p class="mt-2 text-sm text-mist/75 leading-relaxed">Buy SOL on any exchange or on-ramp, then send it to your wallet. Keep a little extra for network fees.</p>
+          </article>
+          <article class="cat-card glass rounded-3xl p-6 pt-8">
+            <span class="ear left"></span><span class="ear right"></span>
+            <div class="flex items-center gap-3">
+              <span class="step-num grid h-10 w-10 place-items-center rounded-full font-display font-bold">3</span>
+              <img src="paw.jpg" alt="" class="h-10 w-10 mix-blend-screen" />
+            </div>
+            <h3 class="mt-4 font-display text-lg text-white">Open Pump.fun swap</h3>
+            <p class="mt-2 text-sm text-mist/75 leading-relaxed">Hit <span class="text-cyan font-semibold">Buy Now</span>. SOL is already set as input and $SOLCATE as output. Paste the CA if you need it.</p>
+          </article>
+          <article class="cat-card glass rounded-3xl p-6 pt-8">
+            <span class="ear left"></span><span class="ear right"></span>
+            <div class="flex items-center gap-3">
+              <span class="step-num grid h-10 w-10 place-items-center rounded-full font-display font-bold">4</span>
+              <img src="paw.jpg" alt="" class="h-10 w-10 mix-blend-screen" />
+            </div>
+            <h3 class="mt-4 font-display text-lg text-white">Swap and join the litter</h3>
+            <p class="mt-2 text-sm text-mist/75 leading-relaxed">Confirm the swap in your wallet. You’re in. Track the chaos on Dexscreener and raid with the pack.</p>
+          </article>
+        </div>
+
+        <div class="mt-10 flex flex-wrap justify-center gap-3">
+          <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener" class="btn-buy rounded-full px-8 py-3.5 font-bold transition">Buy Now</a>
+          <button id="copyBtn2" class="btn-chart rounded-full px-8 py-3.5 font-bold transition">Copy CA</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHART -->
+    <section id="chart" class="py-16 sm:py-24">
+      <div class="mx-auto max-w-7xl px-4">
+        <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
+          <div>
+            <div class="flex items-center gap-3">
+              <span class="whisker"></span>
+              <p class="text-xs tracking-[0.35em] uppercase text-cyan">Live claws</p>
+            </div>
+            <h2 class="mt-3 font-display text-3xl sm:text-5xl font-bold grad-text">$SOLCATE Chart</h2>
+            <p class="mt-2 text-mist/70 text-sm">Dexscreener embed. Pair goes live when CA is set.</p>
+          </div>
+          <a href="https://dexscreener.com/solana/TBA" target="_blank" rel="noopener" class="btn-chart rounded-full px-6 py-3 font-bold transition self-start">Open Chart</a>
+        </div>
+        <div class="glow-ring overflow-hidden rounded-3xl">
+          <iframe
+            class="chart-frame w-full h-[420px] sm:h-[560px] border-0"
+            title="SolCate Dexscreener chart"
+            src="https://dexscreener.com/solana/TBA?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartTheme=dark&theme=dark&chartStyle=0&chartType=usd&interval=15"
+            allow="clipboard-write"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMMUNITY -->
+    <section id="community" class="py-16 sm:py-24">
+      <div class="mx-auto max-w-7xl px-4">
+        <div class="flex flex-col items-center text-center mb-12">
+          <div class="flex items-center gap-3">
+            <span class="whisker"></span>
+            <p class="text-xs tracking-[0.35em] uppercase text-cyan">The pack</p>
+            <span class="whisker"></span>
+          </div>
+          <h2 class="mt-3 font-display text-3xl sm:text-5xl font-bold grad-text">Join the litter</h2>
+          <p class="mt-4 max-w-2xl text-mist/80">SolCate brings fierce feline energy, Solana speed, and nonstop meme chaos to the blockchain. Come raid with us.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 items-stretch">
+          <a href="https://t.me/SOLdiersArmy_portal" target="_blank" rel="noopener" class="cat-card glass rounded-3xl p-8 pt-10 hover:border-cyan/60 transition group">
+            <span class="ear left"></span><span class="ear right"></span>
+            <img src="tg.png" alt="Telegram" class="h-16 w-16 rounded-full group-hover:scale-110 transition" />
+            <h3 class="mt-5 font-display text-xl text-white">Telegram</h3>
+            <p class="mt-2 text-sm text-mist/70">SOLdiers Army portal. Memes, raids, and live litter chat.</p>
+            <p class="mt-4 text-cyan text-sm font-semibold">t.me/SOLdiersArmy_portal →</p>
+          </a>
+          <a href="https://x.com/unicornhood_x" target="_blank" rel="noopener" class="cat-card glass rounded-3xl p-8 pt-10 hover:border-cyan/60 transition group">
+            <span class="ear left"></span><span class="ear right"></span>
+            <img src="x.png" alt="X" class="h-16 w-16 rounded-full object-cover ring-1 ring-white/20 group-hover:scale-110 transition" />
+            <h3 class="mt-5 font-display text-xl text-white">X / Twitter</h3>
+            <p class="mt-2 text-sm text-mist/70">Follow the chaos. Announcements, claws, and chart calls.</p>
+            <p class="mt-4 text-cyan text-sm font-semibold">x.com/unicornhood_x →</p>
+          </a>
+          <div class="cat-card glass rounded-3xl p-8 pt-10 flex flex-col">
+            <span class="ear left"></span><span class="ear right"></span>
+            <img src="cyber-cat.jpg" alt="SolCate cyber cat" class="h-16 w-16 rounded-full object-cover mix-blend-screen" />
+            <h3 class="mt-5 font-display text-xl text-white">Stay sharp</h3>
+            <p class="mt-2 text-sm text-mist/70">Copy the CA. Buy on Pump.fun. Chart on Dexscreener. Repeat.</p>
+            <div class="mt-auto pt-4 flex flex-wrap gap-2">
+              <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener" class="btn-buy rounded-full px-5 py-2 text-sm font-bold">Buy Now</a>
+              <a href="https://dexscreener.com/solana/TBA" target="_blank" rel="noopener" class="btn-chart rounded-full px-5 py-2 text-sm font-bold">Chart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-cyan/15 py-10">
+    <div class="mx-auto max-w-7xl px-4 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-3">
+        <img src="logo.png" alt="SolCate" class="h-12 w-12 rounded-full" />
+        <div>
+          <p class="font-display grad-text text-lg">SolCate</p>
+          <p class="text-xs text-mist/50">$SOLCATE on Solana</p>
+        </div>
+      </div>
+      <p class="text-xs text-mist/45 max-w-md text-center md:text-left">
+        $SOLCATE is a meme coin. Not financial advice. Charts can go down as fast as a cat off a fridge. DYOR.
+      </p>
+      <div class="flex items-center gap-3">
+        <a href="https://t.me/SOLdiersArmy_portal" target="_blank" rel="noopener"><img src="tg.png" alt="Telegram" class="h-9 w-9 rounded-full" /></a>
+        <a href="https://x.com/unicornhood_x" target="_blank" rel="noopener"><img src="x.png" alt="X" class="h-9 w-9 rounded-full object-cover ring-1 ring-white/20" /></a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="toast" class="copy-toast fixed bottom-6 left-1/2 -translate-x-1/2 z-[60] glass rounded-full px-5 py-2.5 text-sm text-cyan shadow-glow">CA copied</div>
+
+  <script>
+    const CA = "TBA";
+    const caText = document.getElementById("caText");
+    caText.textContent = CA;
+
+    async function copyCA() {
+      try {
+        await navigator.clipboard.writeText(CA);
+      } catch {
+        const el = document.createElement("textarea");
+        el.value = CA;
+        document.body.appendChild(el);
+        el.select();
+        document.execCommand("copy");
+        el.remove();
+      }
+      const toast = document.getElementById("toast");
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 1800);
+    }
+
+    document.getElementById("copyBtn").addEventListener("click", copyCA);
+    document.getElementById("copyBtn2").addEventListener("click", copyCA);
+    document.getElementById("menuBtn").addEventListener("click", () => {
+      document.getElementById("mobileMenu").classList.toggle("hidden");
+    });
+    document.querySelectorAll("#mobileMenu a").forEach((a) => {
+      a.addEventListener("click", () => document.getElementById("mobileMenu").classList.add("hidden"));
+    });
+  </script>
+</body>
+</html>
